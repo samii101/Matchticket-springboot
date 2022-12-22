@@ -16,7 +16,7 @@ public class MatchTicketApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MatchTicketApplication.class, args);}
-        @Bean
+        /*@Bean
         CommandLineRunner commandLineRunner (MatchServiceImpl matchService, TicketServiceImpl ticketService){
             return args -> {
                 MatchRequestDto matchRequestDto = new MatchRequestDto(new Date(), "A", "B", "Z");
@@ -27,7 +27,7 @@ public class MatchTicketApplication {
                 }
 
             };
-        }
+        }*/
 
 }
 

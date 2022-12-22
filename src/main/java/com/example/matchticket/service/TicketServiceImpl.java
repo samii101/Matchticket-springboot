@@ -34,13 +34,18 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public TicketResponseDto addTicket(Long id, TicketRequestDto ticketRequestDto) {
         Match match = matchRepository.findById(id).orElseThrow(()->new RuntimeException("Match not Fount"));
-        Ticket ticket =TicketMapper.requestToTicket(ticketRequestDto);
-        ticket.setReference(UUID.randomUUID().toString());
-        ticket.setStatus(Status.ACTIVE);
-        ticket.setMatch(match);
-        ticketRepository.save(ticket);
 
-        return ticketMapper.ticketToResponse(ticket);
+        if(match.getTicketList().size() < 2022){
+            Ticket ticket =TicketMapper.requestToTicket(ticketRequestDto);
+            ticket.setReference(UUID.randomUUID().toString());
+            ticket.setStatus(Status.ACTIVE);
+            ticket.setMatch(match);
+            ticketRepository.save(ticket);
+            return ticketMapper.ticketToResponse(ticket);
+        }
+        return  null;
+
+
     }
 
     @Override

@@ -50,6 +50,7 @@ public class MatchServiceImpl implements MatchService {
         match.setDate(matchRequestDto.getDate());
         match.setEquipe1(matchRequestDto.getEquipe1());
         match.setEquipe2(matchRequestDto.getEquipe2());
+        match.setLieu(matchRequestDto.getLieu());
         matchRepository.save(match);
         return matchMapper.matchToResponse(match);
     }
